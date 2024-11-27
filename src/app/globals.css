@@ -3,19 +3,86 @@
 @tailwind utilities;
 
 :root {
-  --background: #171a20;
-  --foreground: #ffffff;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ffffff;
-    --foreground: #171a20;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  --color-BadgeBg: rgba(240, 185, 11, 0.1);
+  --color-ErrorBg: rgba(246, 70, 93, 0.1);
+  --color-TwoColorIcon: #CACED3;
+  --color-ToastBg: #707A8A;
+  --color-Placeholder: #474D57;
+  --color-Grid: #2B3139;
+  --color-TagBg: #474D57;
+  --color-Success: #2EBD85;
+  --color-SuccessBg: #102821;
+  --color-Error: #F6465D;
+  --color-TextBuy: #2EBD85;
+  --color-Buy: #2EBD85;
+  --color-BuyHover: #32D993;
+  --color-DepthBuyBg: #102821;
+  --color-TextSell: #F6465D;
+  --color-Sell: #F6465D;
+  --color-SellHover: #FF707E;
+  --color-DepthSellBg: #35141D;
+  --color-TextToast: #A37200;
+  --color-TradeBg: #0B0E11;
+  --color-TextLink: #F0B90B;
+  --color-PrimaryYellow: #F0B90B;
+  --color-BtnBg: #FCD535;
+  --color-LiteBg2: #191A1F;
+  --color-LiteBg1: #202630;
+  --color-IconNormal: #848E9C;
+  --color-TextOnYellow: #202630;
+  --color-TextOnGray: #EAECEF;
+  --color-EmphasizeText: #FF693D;
+  --color-RedGreenBgText: #FFFFFF;
+  --color-PrimaryText: #EAECEF;
+  --color-SecondaryText: #B7BDC6;
+  --color-TertiaryText: #848E9C;
+  --color-DisableText: #5E6673;
+  --color-DisabledText: #5E6673;
+  --color-DisableBtn: #2B3139;
+  --color-Line: #2B3139;
+  --color-Vessel: #1E2329;
+  --color-CardBg: #1E2329;
+  --color-InputLine: #474D57;
+  --color-Input: #2B3139;
+  --color-SecondaryBg: #0B0E11;
+  --color-BasicBg: #181A20;
+  --color-gradientPrimary: linear-gradient(295.27deg, #15141A 0%, #474D57 84.52%);
+  --color-gradientBrand: linear-gradient(180deg, #F8D12F 0%, #F0B90B 100%);
+  --color-selectedBg: #1E2026;
+  --color-badgeBg: #2D2A20;
+  --color-popupBg: #1E2329;
+  --color-bg7: #191A1F;
+  --color-bg6: #202630;
+  --color-bg4: #5E6673;
+  --color-bg3: #2B3139;
+  --color-bg2: #0B0E11;
+  --color-bg1: #181A20;
+  --color-bg: #181A20;
+  --color-textToast: #A37200;
+  --color-textBrand: #F0B90B;
+  --color-textDisabled: #5E6673;
+  --color-textThird: #848E9C;
+  --color-textSecondary: #B7BDC6;
+  --color-textPrimary: #EAECEF;
+  --color-textBlack: #0B0E11;
+  --color-textGray: #EAECEF;
+  --color-textWhite: #FFFFFF;
+  --color-iconNormal: #848E9C;
+  --color-disable: #474D57;
+  --color-successBg: #102821;
+  --color-success: #0ECB81;
+  --color-errorBg: #35141D;
+  --color-error: #F6465D;
+  --color-primaryHover: #F0B90B;
+  --color-primary: #FCD535;
+  --color-outlineHover: #6A4403;
+  --color-line: #2B3139;
+  --color-depthBuyBg: #102821;
+  --color-buyHover: #32D993;
+  --color-textBuy: #0ECB81;
+  --color-buy: #0ECB81;
+  --color-depthSellBg: #35141D;
+  --color-sellHover: #FF707E;
+  --color-textSell: #F6465D;
+  --color-sell: #F6465D;
 }
