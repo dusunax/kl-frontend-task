@@ -24,7 +24,7 @@ const Header = ({
 }) => {
   return (
     <div
-      className={`flex h-[64px] items-center justify-between bg-[var(--color-BasicBg)] px-6 ${className}`}
+      className={`flex h-[64px] shrink-0 items-center justify-between bg-[var(--color-BasicBg)] px-6 ${className}`}
     >
       {children}
     </div>

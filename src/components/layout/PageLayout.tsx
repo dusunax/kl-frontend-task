@@ -12,16 +12,14 @@ const PageLayout = ({
   className,
 }: PropsWithChildren<PageLayoutProps>) => {
   return (
-    <>
-      <main
-        className={`h-screen flex flex-col bg-[var(--color-TradeBg)] text-[var(--color-textPrimary)] ${
-          className || ""
-        }`}
-      >
-        {header}
-        {children}
-      </main>
-    </>
+    <div
+      className={`min-h-screen flex flex-col bg-[var(--color-TradeBg)] text-[var(--color-textPrimary)] ${
+        className || ""
+      }`}
+    >
+      {header}
+      {children}
+    </div>
   );
 };
 
