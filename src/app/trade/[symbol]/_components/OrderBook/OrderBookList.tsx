@@ -5,7 +5,7 @@ import type { OrderBookItem, OrderBookFilterType } from "../OrderBook";
 interface OrderBookListProps {
   isHigherThanBefore: boolean;
   list: OrderBookItem[];
-  type: OrderBookFilterType;
+  filter: OrderBookFilterType;
   children: React.ReactNode;
 }
 type OrderBookContextProps = Omit<OrderBookListProps, "children">;
@@ -18,12 +18,19 @@ function List({ type }: { type: OrderBookFilterType }) {
   const context = useContext(OrderBookContext);
   if (!context) return null;
 
-  const { list } = context;
+  const { list, filter } = context;
   const color = type === "buy" ? "var(--color-Buy)" : "var(--color-Sell)";
+
+  console.log(filter);
+
+  let newList = list;
+  if (filter === "all") {
+    newList = list.slice(0, 17);
+  }
 
   return (
     <ul className="flex flex-col text-xs font-semibold my-1">
-      {list.map((item) => {
+      {newList.map((item) => {
         return (
           <div className="flex justify-between py-[2px]" key={item.price}>
             <p style={{ color }}>{item.price}</p>

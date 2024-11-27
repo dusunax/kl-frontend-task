@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --color-BadgeBg: rgba(240, 185, 11, 0.1);
   --color-ErrorBg: rgba(246, 70, 93, 0.1);
