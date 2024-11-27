@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Card from "@/components/card/Card";
 import Star from "@/assets/icons/svg-50.svg";
@@ -9,12 +10,31 @@ export default function SubHeader() {
   const is24hChangeHigherThanBefore = true;
   const tokenTags = ["POW", "Payments", "Vol", "Hot", "Price Protection"];
 
+  const [isFavorite, setIsFavorite] = useState(false);
+  const handleFavorite = () => setIsFavorite(!isFavorite);
+
   return (
     <Card style={{ gridArea: "subHeader" }} className="!py-0">
       <div className="h-full flex items-center gap-2">
-        <div className="border border-[var(--color-DisabledText)] rounded-md flex items-center justify-center w-6 h-6 ">
-          <Star width={16} height={16} color="var(--color-DisabledText" />
-        </div>
+        <button
+          type="button"
+          className={`border rounded-md flex items-center justify-center w-6 h-6 outline-none ${
+            isFavorite
+              ? "border-[var(--color-PrimaryYellow)]"
+              : "border-[var(--color-DisabledText)]"
+          }`}
+          onClick={handleFavorite}
+        >
+          <Star
+            width={16}
+            height={16}
+            color={
+              isFavorite
+                ? "var(--color-PrimaryYellow)"
+                : "var(--color-DisabledText)"
+            }
+          />
+        </button>
 
         <div className="flex flex-col justify-center">
           <h1 className="text-xl font-bold">BTC/USDT</h1>
