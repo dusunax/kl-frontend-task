@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Card from "@/components/card/Card";
+import { Card } from "@/components/card/Card";
 import Star from "@/assets/icons/svg-50.svg";
 
 export default function SubHeader() {
@@ -14,7 +14,7 @@ export default function SubHeader() {
   const handleFavorite = () => setIsFavorite(!isFavorite);
 
   return (
-    <Card style={{ gridArea: "subHeader" }} className="!py-0">
+    <Card style={{ gridArea: "subHeader" }}>
       <div className="h-full flex items-center gap-2">
         <button
           type="button"
