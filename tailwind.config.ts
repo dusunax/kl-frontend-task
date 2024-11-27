@@ -8,9 +8,8 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        binancePlex: ["var(--font-binance-plex-regular)"],
       },
     },
   },

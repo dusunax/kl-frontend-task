@@ -18,7 +18,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={binancePlexVariables}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased font-binancePlex">{children}</body>
     </html>
   );
 }
