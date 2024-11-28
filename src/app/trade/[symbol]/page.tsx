@@ -33,8 +33,8 @@ export default function Page() {
         <Chart />
         <Market />
         <Trades />
-        <Orderform />
         <MarketActivity />
+        <Orderform />
         <UserInfo />
       </div>
 
