@@ -21,8 +21,6 @@ function List({ type }: { type: OrderBookFilterType }) {
   const { list, filter } = context;
   const color = type === "buy" ? "var(--color-Buy)" : "var(--color-Sell)";
 
-  console.log(filter);
-
   let newList = list;
   if (filter === "all") {
     newList = list.slice(0, 17);

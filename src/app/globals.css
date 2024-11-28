@@ -5,6 +5,11 @@
 ::-webkit-scrollbar {
   display: none;
 }
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 
 :root {
   --color-BadgeBg: rgba(240, 185, 11, 0.1);

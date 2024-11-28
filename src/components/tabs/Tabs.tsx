@@ -47,8 +47,6 @@ function TabList({ className }: { className?: string }) {
 }
 
 function Tab({ item, isSelected }: { item: string; isSelected: boolean }) {
-  console.log(item, isSelected);
-
   return (
     <li
       className={`relative flex items-center justify-between font-bold cursor-pointer hover:text-[var(--color-PrimaryText)] transition-colors duration-300 ${
