@@ -1,11 +1,12 @@
 import { createContext, useContext } from "react";
+import type { OrderItem, OrderBookFilter } from "@/types/order";
 import ArrowDown from "@/assets/icons/svg-18.svg";
-import type { OrderBookItem, OrderBookFilterType } from "../OrderBook";
+import useSelectOrderContent from "../../_hooks/useSelectOrderContent";
 
 interface OrderBookListProps {
   isHigherThanBefore: boolean;
-  list: OrderBookItem[];
-  filter: OrderBookFilterType;
+  list: OrderItem[];
+  filter: OrderBookFilter;
   children: React.ReactNode;
 }
 type OrderBookContextProps = Omit<OrderBookListProps, "children">;
@@ -14,7 +15,13 @@ const OrderBookContext = createContext<OrderBookContextProps | undefined>(
   undefined
 );
 
-function List({ type }: { type: OrderBookFilterType }) {
+function List({
+  type,
+  onSelectOrder,
+}: {
+  type: Exclude<OrderBookFilter, "all">;
+  onSelectOrder: ReturnType<typeof useSelectOrderContent>["handleSelectOrder"];
+}) {
   const context = useContext(OrderBookContext);
   if (!context) return null;
 
@@ -26,14 +33,36 @@ function List({ type }: { type: OrderBookFilterType }) {
     newList = list.slice(0, 17);
   }
 
+  const handleSelectOrder = (
+    e: React.MouseEvent<HTMLDivElement>,
+    item: OrderItem
+  ) => {
+    const target = e.target as HTMLElement;
+    onSelectOrder(
+      item,
+      type,
+      target.dataset.field as "price" | "amount" | "total"
+    );
+  };
+
   return (
-    <ul className="flex flex-col text-xs font-semibold my-1">
+    <ul className="flex flex-col text-xs font-semibold my-1 cursor-pointer">
       {newList.map((item) => {
         return (
-          <div className="flex justify-between py-[2px]" key={item.price}>
-            <p style={{ color }}>{item.price}</p>
-            <p className="flex-1 text-right">{item.amount}</p>
-            <p className="w-24 shrink-0 text-right">{item.total}</p>
+          <div
+            className="flex justify-between py-[2px] opacity-80 hover:opacity-100"
+            key={item.price}
+            onClick={(e) => handleSelectOrder(e, item)}
+          >
+            <p style={{ color }} data-field="price">
+              {item.price}
+            </p>
+            <p className="flex-1 text-right" data-field="amount">
+              {item.amount}
+            </p>
+            <p className="w-24 shrink-0 text-right" data-field="total">
+              {item.total}
+            </p>
           </div>
         );
       })}

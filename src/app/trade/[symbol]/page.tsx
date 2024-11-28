@@ -1,3 +1,4 @@
+"use client";
 import Chart from "./_components/Chart";
 import Footer from "./_components/Footer";
 import Market from "./_components/Market";
@@ -7,8 +8,11 @@ import Orderform from "./_components/Orderform";
 import SubHeader from "./_components/SubHeader";
 import Trades from "./_components/Trades";
 import UserInfo from "./_components/UserInfo";
+import useSelectOrderContent from "./_hooks/useSelectOrderContent";
 
 export default function Page() {
+  const { selectedOrder, handleSelectOrder } = useSelectOrderContent();
+
   return (
     <main className="relative flex justify-center bg-[var(--color-TradeBg)]">
       <div
@@ -29,12 +33,12 @@ export default function Page() {
         }}
       >
         <SubHeader />
-        <OrderBook />
+        <OrderBook onSelectOrder={handleSelectOrder} />
         <Chart />
         <Market />
         <Trades />
         <MarketActivity />
-        <Orderform />
+        <Orderform selectedOrder={selectedOrder} />
         <UserInfo />
       </div>
 
