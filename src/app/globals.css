@@ -5,6 +5,11 @@
 ::-webkit-scrollbar {
   display: none;
 }
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 
 :root {
   --color-BadgeBg: rgba(240, 185, 11, 0.1);
@@ -90,4 +95,21 @@
   --color-textSell: #F6465D;
   --color-sell: #F6465D;
   --color-CUSTOM-yellow: #2e2a1e;
+}
+
+button:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+button.buy {
+  @apply bg-[var(--color-success)] text-white
+}
+button.sell {
+  @apply bg-[var(--color-sell)] text-white
+}
+button.dark {
+  @apply bg-[var(--color-Line)] text-[var(--color-PrimaryText)]
+}
+button.primary {
+  @apply bg-[var(--color-primary)] text-[var(--color-TextOnYellow)]
 }
