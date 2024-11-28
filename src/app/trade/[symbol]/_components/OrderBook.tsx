@@ -111,7 +111,9 @@ export default function OrderBook() {
       }
     >
       <OrderBookFilter filter={filter} setFilter={setFilter} />
-      <OrderBookItemHeader />
+      <div className="mb-2">
+        <OrderBookItemHeader />
+      </div>
       <OrderBookList
         list={DUMMY_LIST.buy}
         filter={filter}
