@@ -1,11 +1,12 @@
 "use client";
 
-import { Card } from "@/components/card/Card";
 import { useState } from "react";
+import { Card } from "@/components/card/Card";
+import { Tabs } from "@/components/tabs/Tabs";
 
 export default function Chart() {
   const [selected, setSelected] = useState("Chart");
-  const [subSelected, setSubSelected] = useState("Time");
+  const [subSelected, setSubSelected] = useState("1D");
 
   return (
     <Card
@@ -13,24 +14,24 @@ export default function Chart() {
       header={
         <>
           <Card.Header>
-            <Card.Tabs
+            <Tabs.Wrapper
               list={["Chart", "Info", "Tranding Data", "Square"]}
               selected={selected}
               setSelected={setSelected}
             >
-              <Card.TabList />
-            </Card.Tabs>
+              <Tabs.TabList />
+            </Tabs.Wrapper>
           </Card.Header>
 
           <Card.Header>
-            <Card.Tabs
+            <Tabs.Wrapper
               list={["Time", "1s", "15m", "1H", "4H", "1D", "1W"]}
               selected={subSelected}
               setSelected={setSubSelected}
               subHeader
             >
-              <Card.TabList />
-            </Card.Tabs>
+              <Tabs.TabList />
+            </Tabs.Wrapper>
           </Card.Header>
         </>
       }
