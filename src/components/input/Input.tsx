@@ -3,6 +3,7 @@ import {
   Dispatch,
   forwardRef,
   SetStateAction,
+  useEffect,
   useState,
 } from "react";
 import InputArrowPad from "./InputNumberArrowPad";
@@ -38,6 +39,10 @@ const InputNumber = forwardRef<HTMLInputElement, InputProps<number>>(
       setCurrentValue(value);
       setValue(value);
     };
+
+    useEffect(() => {
+      setCurrentValue(Number(props.value));
+    }, [props.value]);
 
     return (
       <>
