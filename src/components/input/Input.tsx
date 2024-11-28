@@ -30,7 +30,7 @@ type InputProps<T extends string | number | readonly string[]> =
   };
 
 const InputNumber = forwardRef<HTMLInputElement, InputProps<number>>(
-  ({ setValue, className, type, min, max, unit, ...props }, ref) => {
+  ({ setValue, className, type, unit, ...props }, ref) => {
     const [currentValue, setCurrentValue] = useState(0);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,7 +64,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputProps<number>>(
 const Input = forwardRef<
   HTMLInputElement,
   InputProps<string | number | readonly string[]>
->(({ unit, setValue, className, type, min, max, ...props }, ref) => {
+>(({ unit, setValue, className, type, ...props }, ref) => {
   const [currentValue, setCurrentValue] = useState<
     string | number | undefined | readonly string[]
   >(props.defaultValue ?? undefined);
@@ -94,5 +94,8 @@ const Input = forwardRef<
 InputField.Label = InputLabel;
 InputField.Input = Input;
 InputField.Number = InputNumber;
+
+Input.displayName = "Input";
+InputNumber.displayName = "InputNumber";
 
 export { InputField };
