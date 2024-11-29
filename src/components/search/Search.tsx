@@ -18,7 +18,7 @@ export default function Search({
     debounce((value: string) => {
       setSearch(value);
     }, 200),
-    []
+    [setSearch]
   );
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
