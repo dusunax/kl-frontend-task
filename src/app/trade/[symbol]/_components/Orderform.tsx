@@ -26,11 +26,11 @@ export default function Orderform({
       setSellAmount(0);
       setBuyAmount(0);
       return;
-    };
+    }
     setOrders(selectedOrder);
     setSellAmount(selectedOrder.type === "sell" ? selectedOrder.sumBTC : 0);
     setBuyAmount(selectedOrder.type === "buy" ? selectedOrder.sumBTC : 0);
-  }, [selectedOrder.price]);
+  }, [selectedOrder.price, selectedOrder.type, selectedOrder]);
 
   const renderInputFields = (
     type: "buy" | "sell",

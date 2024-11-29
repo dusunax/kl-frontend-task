@@ -1,4 +1,4 @@
-import { type OrderBookFilterType } from "../OrderBook";
+import type { OrderBookFilter as OrderBookFilterType } from "@/types/order";
 import OrderBookIcon from "@/assets/icons/orderbook.svg";
 import BuyOrderIcon from "@/assets/icons/buy-order.svg";
 import SellOrderIcon from "@/assets/icons/sell-order.svg";
