@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center bg-[var(--color-TradeBg)] text-[var(--color-textPrimary)]">
-      <Link href="/trade/BTCUSDT">
+    <div className="h-screen flex flex-col items-center justify-center bg-[var(--color-TradeBg)] text-[var(--color-textPrimary)]">
+      <Link href="/en/trade/BTCUSDT">
         <h1 className="text-4xl font-bold underline">Binance Plex Font Test</h1>
       </Link>
       <Image

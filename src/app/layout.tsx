@@ -9,15 +9,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { lang },
 }: Readonly<{
   children: React.ReactNode;
+  params: { lang: string };
 }>) {
   const binancePlexVariables = Object.values(binancePlex)
     .map((font) => font.variable)
     .join(" ");
 
   return (
-    <html lang="en" className={binancePlexVariables}>
+    <html lang={lang} className={binancePlexVariables}>
       <body className="antialiased font-binancePlex">{children}</body>
     </html>
   );
