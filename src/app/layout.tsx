@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   description: "Binance Plex Font Test",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const binancePlexVariables = Object.values(binancePlex)
     .map((font) => font.variable)
     .join(" ");
