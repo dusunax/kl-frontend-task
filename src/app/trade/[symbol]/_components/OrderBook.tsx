@@ -9,7 +9,7 @@ import OrderBookFilter from "./OrderBook/OrderBookFilter";
 import OrderBookItemHeader from "./OrderBook/OrderBookItemHeader";
 import OrderBookList from "./OrderBook/OrderBookList";
 import useSelectOrderContent from "../_hooks/useSelectOrderContent";
-import DUMMY_LIST from "../dummyData.json";
+import DUMMY_LIST from "../_mock/dummyOrderBook.json";
 
 export default function OrderBook({
   onSelectOrder,

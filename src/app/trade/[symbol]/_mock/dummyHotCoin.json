@@ -1,0 +1,154 @@
+[
+  {
+    "assetCode": "BNB",
+    "assetName": "BNB",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20220218/94863af2-c980-42cf-a139-7b9f462a36c2.png",
+    "chartLine": null,
+    "symbol": "BNBUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "BTC",
+    "assetName": "Bitcoin",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/87496d50-2408-43e1-ad4c-78b47b448a6a.png",
+    "chartLine": null,
+    "symbol": "BTCUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "ETH",
+    "assetName": "Ethereum",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/3a8c9fe6-2a76-4ace-aa07-415d994de6f0.png",
+    "chartLine": null,
+    "symbol": "ETHUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "SOL",
+    "assetName": "Solana",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20230404/b2f0c70f-4fb2-4472-9fe7-480ad1592421.png",
+    "chartLine": null,
+    "symbol": "SOLUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "PEPE",
+    "assetName": "Pepe",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20240812/a7120d40-14bd-4332-80fd-cd483ffbe086.png",
+    "chartLine": null,
+    "symbol": "PEPEUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "XRP",
+    "assetName": "XRP",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/4766a9cc-8545-4c2b-bfa4-cad2be91c135.png",
+    "chartLine": null,
+    "symbol": "XRPUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "DOGE",
+    "assetName": "Dogecoin",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/22ef2baf-b210-4882-afd9-1317bb7a3603.png",
+    "chartLine": null,
+    "symbol": "DOGEUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "ACT",
+    "assetName": "Act I : The AI Prophecy",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20241111/17684754-d5ff-44df-99c2-64b65afd7e63.png",
+    "chartLine": null,
+    "symbol": "ACTUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "GFT",
+    "assetName": "Gifto",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20230130/7c496619-402c-447b-9fa8-62342f09f963.png",
+    "chartLine": null,
+    "symbol": "GFTUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "NEIRO",
+    "assetName": "First Neiro On Ethereum",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20240916/0d983347-fb26-4a39-835f-ed52fa23f003.png",
+    "chartLine": null,
+    "symbol": "NEIROUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "ADA",
+    "assetName": "Cardano",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/3bc4f3c3-c142-4379-9ebd-a72f332776bc.png",
+    "chartLine": null,
+    "symbol": "ADAUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "PNUT",
+    "assetName": "Peanut the Squirrel",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20241111/1dc3bb7f-77f1-4b59-93ba-90abc756812a.png",
+    "chartLine": null,
+    "symbol": "PNUTUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "WIF",
+    "assetName": "Dogwifhat",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20240305/ca762203-3b9c-4315-a052-fca62900b68e.png",
+    "chartLine": null,
+    "symbol": "WIFUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "WLD",
+    "assetName": "Worldcoin",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20240812/5e63bd55-8a04-4666-baf8-84a5a7048c4c.png",
+    "chartLine": null,
+    "symbol": "WLDUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "BONK",
+    "assetName": "Bonk",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20231215/c82e3e80-e26e-4ccb-8f59-ff22b21c3cb7.png",
+    "chartLine": null,
+    "symbol": "BONKUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "THE",
+    "assetName": "THENA",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20241126/5649a22b-d487-4402-a2db-c5b23122b221.png",
+    "chartLine": null,
+    "symbol": "THEUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "SHIB",
+    "assetName": "SHIBA INU",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20210510/028e07ac-4117-4ddf-b9fd-90d8bd1c9406.png",
+    "chartLine": null,
+    "symbol": "SHIBUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "FLOKI",
+    "assetName": "FLOKI",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20240812/f46527b1-1a1a-463a-b815-81da891804a4.png",
+    "chartLine": null,
+    "symbol": "FLOKIUSDT",
+    "circulatingSupply": null
+  },
+  {
+    "assetCode": "AVAX",
+    "assetName": "Avalanche",
+    "logoUrl": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20200922/3fc414d2-c33b-4c01-8138-0b0acac5657b.png",
+    "chartLine": null,
+    "symbol": "AVAXUSDT",
+    "circulatingSupply": null
+  }
+]
