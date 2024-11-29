@@ -7,19 +7,17 @@ export const metadata: Metadata = {
   description: "Binance Plex Font Test",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  params: { lang },
-}: Readonly<{
+}: {
   children: React.ReactNode;
-  params: { lang: string };
-}>) {
+}) {
   const binancePlexVariables = Object.values(binancePlex)
     .map((font) => font.variable)
     .join(" ");
 
   return (
-    <html lang={lang} className={binancePlexVariables}>
+    <html lang="en" className={binancePlexVariables}>
       <body className="antialiased font-binancePlex">{children}</body>
     </html>
   );

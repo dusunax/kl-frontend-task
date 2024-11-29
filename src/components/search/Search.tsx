@@ -14,6 +14,7 @@ export default function Search({
 }) {
   const [inputValue, setInputValue] = useState(search);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleChange = useCallback(
     debounce((value: string) => {
       setSearch(value);

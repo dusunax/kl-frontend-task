@@ -1,18 +1,21 @@
 import { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import binanceH from "@/assets/images/binance-h.png";
 
 function HeaderLogo() {
   return (
     <Link href="/">
-      <Image
-        src={"/images/binance-h.png"}
-        alt="Binance Plex Logo"
-        width={120}
-        height={64}
-        priority
-        style={{ width: "120px", height: "auto" }}
-      />
+      <div className="relative w-[120px] h-[64px]">
+        <Image
+          src={binanceH}
+          alt="Binance Plex Logo"
+          fill
+          priority
+          sizes="(max-width: 640px) 100px, (max-width: 768px) 120px"
+          style={{ objectFit: "contain" }}
+        />
+      </div>
     </Link>
   );
 }
