@@ -38,7 +38,8 @@ export default function Search({
         type="text"
         value={inputValue}
         onChange={onInputChange}
-        className={`flex-1 bg-transparent text-[var(--color-PrimaryText)] text-sm font-black ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm text-right ${className}`}
+        className={`flex-1 bg-transparent text-[var(--color-PrimaryText)] text-sm font-black ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm ${className}`}
+        placeholder="Search"
       />
       <button
         type="button"
