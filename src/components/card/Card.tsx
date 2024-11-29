@@ -4,6 +4,7 @@ interface CardWrapperProps {
   className?: string;
   style?: React.CSSProperties;
   header?: ReactNode;
+  px?: number;
 }
 
 function Header({ children }: { children: ReactNode }) {
@@ -27,6 +28,7 @@ function Card({
   className,
   style,
   header,
+  px = 4,
 }: PropsWithChildren<CardWrapperProps>) {
   return (
     <div
@@ -34,7 +36,7 @@ function Card({
       style={style}
     >
       {header}
-      <div className="px-4 flex-1">{children}</div>
+      <div className={`px-${px} flex-1`}>{children}</div>
     </div>
   );
 }
