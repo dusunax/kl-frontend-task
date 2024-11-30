@@ -5,6 +5,7 @@ import { Card } from "@/components/card/Card";
 import { Tabs } from "@/components/tabs/Tabs";
 import ChartContent from "./Chart/ChartContent";
 
+
 export default function Chart() {
   const [selected, setSelected] = useState("Chart");
   const [subSelected, setSubSelected] = useState("1D");

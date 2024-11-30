@@ -13,6 +13,9 @@ input::-webkit-inner-spin-button {
 button {
   outline: none;
 }
+#tv-attr-logo {
+  display: none;
+}
 
 :root {
   --color-BadgeBg: rgba(240, 185, 11, 0.1);
