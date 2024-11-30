@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Binance Plex Font Test",
-  description: "Binance Plex Font Test",
+  title: "Binance Plex Front Test",
+  description: "Binance Plex Front Test",
 };
 
 export default async function RootLayout({
