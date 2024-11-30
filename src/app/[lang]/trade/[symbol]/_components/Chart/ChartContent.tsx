@@ -1,9 +1,17 @@
 "use client";
 
-import { createChart, CrosshairMode, LineStyle } from "lightweight-charts";
+import {
+  createChart,
+  CrosshairMode,
+  LineStyle,
+  type MouseEventHandler,
+  type MouseEventParams,
+  type Time,
+} from "lightweight-charts";
 import { random } from "lodash";
 import { useEffect, useRef } from "react";
 import mockData from "../../_mock/dummyChart.json";
+import dayjs from "dayjs";
 
 const maData = mockData.map((item) => ({
   time: item.time,
@@ -12,6 +20,8 @@ const maData = mockData.map((item) => ({
 
 export default function ChartContent() {
   const chartContainerRef = useRef<HTMLDivElement>(null);
+  const chartLegendRef = useRef<HTMLDivElement>(null);
+  const maLegendRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!chartContainerRef.current) return;
@@ -63,6 +73,81 @@ export default function ChartContent() {
     });
     baselineSeries.setData(maData);
 
+    const chartLegend = chartLegendRef.current;
+    const maLegend = maLegendRef.current;
+
+    const setChartLegendHtml = ({
+      time,
+      open,
+      high,
+      low,
+      close,
+    }: {
+      time: string;
+      open: number;
+      high: number;
+      low: number;
+      close: number;
+    }) => {
+      if (!chartLegend) return;
+      const formattedTime = dayjs(time).format("YYYY/MM/DD 00:00");
+      chartLegend.innerHTML = `
+        <span>${formattedTime}</span>
+        <p>
+          open: <strong class="text-[var(--color-PrimaryText)]">${open}</strong>
+        </p>
+        <p>
+          high: <strong class="text-[var(--color-PrimaryText)]">${high}</strong>
+        </p>
+        <p>
+          low: <strong class="text-[var(--color-PrimaryText)]">${low}</strong>
+        </p>
+        <p>
+          close: <strong class="text-[var(--color-PrimaryText)]">${close}</strong>
+        </p>
+      `;
+    };
+
+    const setMaLegendHtml = ({ value }: { value: number }) => {
+      if (!maLegend) return;
+      maLegend.innerHTML = `
+        <span>MA(7):</span>
+        <p class="text-[var(--color-primary)]">${value}</p>
+      `;
+    };
+
+    const updateLegend: MouseEventHandler<Time> = (param) => {
+      const validCrosshairPoint = !(
+        param === undefined || param.time === undefined
+      );
+      if (!validCrosshairPoint) return;
+
+      const data = param.seriesData.get(candlestickSeries) as {
+        time: string;
+        open: number;
+        high: number;
+        low: number;
+        close: number;
+      };
+      const maData = param.seriesData.get(baselineSeries) as { value: number };
+
+      setChartLegendHtml(data);
+      setMaLegendHtml(maData);
+    };
+
+    chart.subscribeCrosshairMove(updateLegend);
+    updateLegend({
+      seriesData: {
+        get: () => ({
+          time: "2024-10-08",
+          open: 72000,
+          high: 73000,
+          low: 71000,
+          close: 72500,
+        }),
+      },
+    } as unknown as MouseEventParams<Time>);
+
     chart.applyOptions({
       crosshair: {
         mode: CrosshairMode.Normal,
@@ -76,8 +161,7 @@ export default function ChartContent() {
       localization: {
         locale: "en",
         timeFormatter: (time: Date) => {
-          const date = new Date(time);
-          return `${date.getMonth() + 1}/${date.getDate()}`;
+          return dayjs(time).format("YYYY/MM/DD 00:00");
         },
       },
     });
@@ -89,14 +173,19 @@ export default function ChartContent() {
   }, []);
 
   return (
-    <div
-      ref={chartContainerRef}
-      id="chart"
-      style={{
-        width: "100%",
-        height: "420px",
-        position: "relative",
-      }}
-    />
+    <div className="w-full h-[420px] relative">
+      <div
+        ref={chartContainerRef}
+        id="chart"
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
+      <div className="absolute top-0 left-0 p-2 text-xs font-bold text-[var(--color-TertiaryText)]">
+        <div ref={chartLegendRef} id="chart-legend" className="flex gap-2" />
+        <div ref={maLegendRef} id="ma-legend" className="flex gap-2" />
+      </div>
+    </div>
   );
 }

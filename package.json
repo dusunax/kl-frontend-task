@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.61.4",
+    "dayjs": "^1.11.13",
     "lightweight-charts": "^4.2.1",
     "lodash": "^4.17.21",
     "next": "15.0.3",
