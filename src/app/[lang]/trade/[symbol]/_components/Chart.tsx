@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Card } from "@/components/card/Card";
 import { Tabs } from "@/components/tabs/Tabs";
+import ChartContent from "./Chart/ChartContent";
 
 export default function Chart() {
   const [selected, setSelected] = useState("Chart");
@@ -35,6 +36,8 @@ export default function Chart() {
           </Card.Header>
         </>
       }
-    ></Card>
+    >
+      <ChartContent />
+    </Card>
   );
 }
