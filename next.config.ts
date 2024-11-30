@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
     fileLoaderRule.exclude = /\.svg$/i;
     return config;
   },
+  assetPrefix:
+    process.env.NODE_ENV === "production"
+      ? "https://kl-frontend-task.vercel.app"
+      : "",
 };
 
 export default nextConfig;
