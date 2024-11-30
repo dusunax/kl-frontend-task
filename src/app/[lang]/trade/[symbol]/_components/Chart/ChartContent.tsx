@@ -162,20 +162,13 @@ export default function ChartContent() {
       `;
     };
 
-    const setVolumeLegendHtml = ({
-      value,
-      trend,
-    }: {
-      value: number;
-      trend: "up" | "down";
-    }) => {
-      const color = trend === "up" ? "#2EBD85" : "#F6465D";
+    const setVolumeLegendHtml = ({ value }: { value: number }) => {
       if (!volumeLegend) return;
       volumeLegend.innerHTML = `
         <span>Vol:</span>
-        <p style="color: ${color} !important">${numeral(value).format(
-        "0.000a"
-      )}</p>
+        <p class="text-[var(--color-PrimaryText)]">${numeral(value).format(
+          "0.000a"
+        )}</p>
       `;
     };
 
@@ -200,7 +193,7 @@ export default function ChartContent() {
 
       setChartLegendHtml({ ...chartData, trend });
       setMaLegendHtml(maData);
-      setVolumeLegendHtml({ ...volumeData, trend });
+      setVolumeLegendHtml(volumeData);
     };
 
     chart.subscribeCrosshairMove(updateLegend);
