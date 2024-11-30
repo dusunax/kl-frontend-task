@@ -12,6 +12,7 @@ import {
 } from "lightweight-charts";
 import dayjs from "dayjs";
 import mockData from "../../_mock/dummyChart.json";
+import numeral from "numeral";
 
 const maData = mockData.map((item) => ({
   time: item.time,
@@ -98,7 +99,6 @@ export default function ChartContent() {
       lastValueVisible: false,
       priceLineVisible: false,
       color: "#707A8A",
-
     });
     volumeSeries.priceScale().applyOptions({
       scaleMargins: {
@@ -112,7 +112,7 @@ export default function ChartContent() {
         value: item.value,
         color: item.trend === "up" ? "#2EBD85" : "#F6465D",
       }))
-  );
+    );
 
     const chartLegend = chartLegendRef.current;
     const maLegend = maLegendRef.current;
@@ -162,12 +162,20 @@ export default function ChartContent() {
       `;
     };
 
-    const setVolumeLegendHtml = ({ value, trend }: { value: number; trend: "up" | "down" }) => {
+    const setVolumeLegendHtml = ({
+      value,
+      trend,
+    }: {
+      value: number;
+      trend: "up" | "down";
+    }) => {
       const color = trend === "up" ? "#2EBD85" : "#F6465D";
       if (!volumeLegend) return;
       volumeLegend.innerHTML = `
         <span>Vol:</span>
-        <p style="color: ${color} !important">${value}</p>
+        <p style="color: ${color} !important">${numeral(value).format(
+        "0.000a"
+      )}</p>
       `;
     };
 
