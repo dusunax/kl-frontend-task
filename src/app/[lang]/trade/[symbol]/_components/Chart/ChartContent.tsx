@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import { random } from "lodash";
 import {
   createChart,
   CrosshairMode,
@@ -8,21 +10,24 @@ import {
   type MouseEventParams,
   type Time,
 } from "lightweight-charts";
-import { random } from "lodash";
-import { useEffect, useRef } from "react";
-import mockData from "../../_mock/dummyChart.json";
 import dayjs from "dayjs";
+import mockData from "../../_mock/dummyChart.json";
 
 const maData = mockData.map((item) => ({
   time: item.time,
   value: item.close + random(-2000, 1000),
+}));
+const volumeData = mockData.map((item) => ({
+  time: item.time,
+  value: item.close * 10 + random(-500000, 500000),
+  trend: item.close > item.open ? "up" : "down",
 }));
 
 export default function ChartContent() {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartLegendRef = useRef<HTMLDivElement>(null);
   const maLegendRef = useRef<HTMLDivElement>(null);
-
+  const volumeLegendRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!chartContainerRef.current) return;
 
@@ -58,6 +63,12 @@ export default function ChartContent() {
       priceLineVisible: false,
     });
     candlestickSeries.setData(mockData);
+    candlestickSeries.priceScale().applyOptions({
+      scaleMargins: {
+        top: 0,
+        bottom: 0.3,
+      },
+    });
 
     const baselineSeries = chart.addBaselineSeries({
       topLineColor: "#FCD535",
@@ -72,9 +83,40 @@ export default function ChartContent() {
       crosshairMarkerVisible: false,
     });
     baselineSeries.setData(maData);
+    baselineSeries.priceScale().applyOptions({
+      scaleMargins: {
+        top: 0,
+        bottom: 0.3,
+      },
+    });
+
+    const volumeSeries = chart.addHistogramSeries({
+      priceFormat: {
+        type: "volume",
+      },
+      priceScaleId: "", // set as an overlay by setting a blank priceScaleId
+      lastValueVisible: false,
+      priceLineVisible: false,
+      color: "#707A8A",
+
+    });
+    volumeSeries.priceScale().applyOptions({
+      scaleMargins: {
+        top: 0.85,
+        bottom: 0,
+      },
+    });
+    volumeSeries.setData(
+      volumeData.map((item) => ({
+        time: item.time,
+        value: item.value,
+        color: item.trend === "up" ? "#2EBD85" : "#F6465D",
+      }))
+  );
 
     const chartLegend = chartLegendRef.current;
     const maLegend = maLegendRef.current;
+    const volumeLegend = volumeLegendRef.current;
 
     const setChartLegendHtml = ({
       time,
@@ -82,28 +124,32 @@ export default function ChartContent() {
       high,
       low,
       close,
+      trend,
     }: {
       time: string;
       open: number;
       high: number;
       low: number;
       close: number;
+      trend: "up" | "down";
     }) => {
       if (!chartLegend) return;
+      const color = trend === "up" ? "#2EBD85" : "#F6465D";
+
       const formattedTime = dayjs(time).format("YYYY/MM/DD 00:00");
       chartLegend.innerHTML = `
         <span>${formattedTime}</span>
         <p>
-          open: <strong class="text-[var(--color-PrimaryText)]">${open}</strong>
+          open: <strong style="color: ${color}">${open}</strong>
         </p>
         <p>
-          high: <strong class="text-[var(--color-PrimaryText)]">${high}</strong>
+          high: <strong style="color: ${color}">${high}</strong>
         </p>
         <p>
-          low: <strong class="text-[var(--color-PrimaryText)]">${low}</strong>
+          low: <strong style="color: ${color}">${low}</strong>
         </p>
         <p>
-          close: <strong class="text-[var(--color-PrimaryText)]">${close}</strong>
+          close: <strong style="color: ${color} !important">${close}</strong>
         </p>
       `;
     };
@@ -116,13 +162,22 @@ export default function ChartContent() {
       `;
     };
 
+    const setVolumeLegendHtml = ({ value, trend }: { value: number; trend: "up" | "down" }) => {
+      const color = trend === "up" ? "#2EBD85" : "#F6465D";
+      if (!volumeLegend) return;
+      volumeLegend.innerHTML = `
+        <span>Vol:</span>
+        <p style="color: ${color} !important">${value}</p>
+      `;
+    };
+
     const updateLegend: MouseEventHandler<Time> = (param) => {
       const validCrosshairPoint = !(
         param === undefined || param.time === undefined
       );
       if (!validCrosshairPoint) return;
 
-      const data = param.seriesData.get(candlestickSeries) as {
+      const chartData = param.seriesData.get(candlestickSeries) as {
         time: string;
         open: number;
         high: number;
@@ -130,9 +185,14 @@ export default function ChartContent() {
         close: number;
       };
       const maData = param.seriesData.get(baselineSeries) as { value: number };
+      const volumeData = param.seriesData.get(volumeSeries) as {
+        value: number;
+      };
+      const trend = chartData.close > chartData.open ? "up" : "down";
 
-      setChartLegendHtml(data);
+      setChartLegendHtml({ ...chartData, trend });
       setMaLegendHtml(maData);
+      setVolumeLegendHtml({ ...volumeData, trend });
     };
 
     chart.subscribeCrosshairMove(updateLegend);
@@ -185,6 +245,9 @@ export default function ChartContent() {
       <div className="absolute top-0 left-0 p-2 text-xs font-bold text-[var(--color-TertiaryText)]">
         <div ref={chartLegendRef} id="chart-legend" className="flex gap-2" />
         <div ref={maLegendRef} id="ma-legend" className="flex gap-2" />
+      </div>
+      <div className="absolute bottom-[90px] left-0 p-2 text-xs font-bold text-[var(--color-TertiaryText)]">
+        <div ref={volumeLegendRef} id="volume-legend" className="flex gap-2" />
       </div>
     </div>
   );
